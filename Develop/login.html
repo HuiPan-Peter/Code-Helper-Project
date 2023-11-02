@@ -3,13 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CodeHelpers</title>
+    <title>Code Helper</title>
     <link rel="stylesheet" href="styles.css">
-    <link href="path/to/tailwind.css" rel="stylesheet">
+    <link href="Assets/tailwind.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
 </head>
-<body>
 
-<header> </header>
+
+
+<body class="bg-gray-100 flex items-center justify-center h-screen">
+    <div class="bg-white p-8 rounded shadow-md w-96">
+        <!-- Logo heading using Tailwind CSS -->
+        <h1 class="text-4xl font-semibold text-blue-500 text-center mb-6">
+            <span class="bg-yellow-500 text-white p-2 rounded-lg">Code</span>
+            <span class="bg-green-500 text-white p-2 rounded-lg ml-2">Helpers</span>
+        </h1>
+        <form action="#" method="post">
+            <div class="mb-4">
+                <label for="username" class="block text-sm font-medium text-gray-600">Username</label>
+                <input type="text" id="username" name="username" class="w-full px-4 py-2 border rounded-lg">
+            </div>
+            <div class="mb-4">
+                <label for "password" class="block text-sm font-medium text-gray-600">Password</label>
+                <input type="password" id="password" name="password" class="w-full px-4 py-2 border rounded-lg">
+            </div>
+            <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition">Login</button>
+        </form>
+    </div>
+</body>
+</html>
 
 
 
