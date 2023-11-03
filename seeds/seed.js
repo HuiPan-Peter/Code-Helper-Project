@@ -20,14 +20,14 @@ const seedDatabase = async () => {
         // Users Seed
         const userData = [
             {
-                username: 'johnDoe',
+                userName: 'johnDoe',
                 password: 'password123',
                 email: 'john@example.com',
                 administrator: false,
                 expertise_id: 1,
             },
             {
-                username: 'janeDoe',
+                userName: 'janeDoe',
                 password: 'password456',
                 email: 'jane@example.com',
                 administrator: true,
@@ -41,13 +41,13 @@ const seedDatabase = async () => {
             {
                 title: 'HTML Basics',
                 content: 'HTML stands for HyperText Markup Language.',
-                username_id: 1,
+                userName_id: 1,
                 post_date: new Date(),
             },
             {
                 title: 'Understanding JavaScript',
                 content: 'JavaScript is a scripting language for Web pages.',
-                username_id: 2,
+                userName_id: 2,
                 post_date: new Date(),
             },
         ];
@@ -58,13 +58,13 @@ const seedDatabase = async () => {
             {
                 commentText: 'This is very informative, thanks!',
                 commented_at: new Date(),
-                username_id: 2,
+                userName_id: 2,
                 post_id: 1,
             },
             {
                 commentText: 'I had some doubts, but this cleared it up!',
                 commented_at: new Date(),
-                username_id: 1,
+                userName_id: 1,
                 post_id: 2,
             },
         ];
