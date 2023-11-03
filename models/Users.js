@@ -22,7 +22,28 @@ User.init(
             unique: true,
         },
         email: {
-
+            type: DataTypes.STRING,
+            allowNull: false,
+            unique: true,
+            validate: {
+                isEmail: true,
+            },
         },
+        password: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            validate: {
+                len: [8, 16],
+                isAlphanumeric: true,
+            },
+        },
+        administrator: {
+            type: DataTypes.BOOLEAN,
+            allowNull: false,
+        },
+        // TODO: look into arrays
+        // expertises: {
+
+        // }
     }
 );
