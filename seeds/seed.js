@@ -1,76 +1,81 @@
+const sequelize = require('../config/connection');
+const User = require('../models/user');
+const Expertise = require('../models/expertise');
+const Post = require('../models/post');
+const Comment = require('../models/comment');
 
-// please double check the const validation and use 
+const seedDatabase = async () => {
+    try {
+        await sequelize.sync({ force: true });
 
+        // Expertise Seed
+        const expertiseData = [
+            { languages: 'HTML' },
+            { languages: 'JavaScript' },
+            { languages: 'CSS' },
+            { languages: 'Database' },
+        ];
+        await Expertise.bulkCreate(expertiseData);
 
+        // Users Seed
+        const userData = [
+            {
+                username: 'johnDoe',
+                password: 'password123',
+                email: 'john@example.com',
+                administrator: false,
+                expertise_id: 1,
+            },
+            {
+                username: 'janeDoe',
+                password: 'password456',
+                email: 'jane@example.com',
+                administrator: true,
+                expertise_id: 2,
+            },
+        ];
+        await User.bulkCreate(userData);
 
-// const sequelize = require('../config/connection');
-// const User = require('../models/user');
-// const Expertise = require('../models/expertise');
-// const Post = require('../models/post');
-// const Comment = require('../models/comment');
+        // Posts Seed
+        const postData = [
+            {
+                title: 'HTML Basics',
+                content: 'HTML stands for HyperText Markup Language.',
+                username_id: 1,
+                post_date: new Date(),
+            },
+            {
+                title: 'Understanding JavaScript',
+                content: 'JavaScript is a scripting language for Web pages.',
+                username_id: 2,
+                post_date: new Date(),
+            },
+        ];
+        await Post.bulkCreate(postData);
 
-// const seedDatabase = async () => {
-//   await sequelize.sync({ force: true });
+        // Comments Seed
+        const commentData = [
+            {
+                commentText: 'This is very informative, thanks!',
+                commented_at: new Date(),
+                username_id: 2,
+                post_id: 1,
+            },
+            {
+                commentText: 'I had some doubts, but this cleared it up!',
+                commented_at: new Date(),
+                username_id: 1,
+                post_id: 2,
+            },
+        ];
+        await Comment.bulkCreate(commentData);
 
-//   // Expertise Seed
-//   const expertises = await Expertise.bulkCreate([
-//     { languages: 'HTML' },
-//     { languages: 'JavaScript' },
-//     { languages: 'CSS' },
-//     { languages: 'Database' },
-//   ]);
+        console.log('Database seeded successfully.');
+    } catch (error) {
+        console.error('Error during database seeding:', error);
+    } finally {
+        process.exit(0);
+    }
+};
 
-//   // Users Seed
-//   const users = await User.bulkCreate([
-//     {
-//       username: 'johnDoe',
-//       password: 'password123',
-//       email: 'john@example.com',
-//       administrator: false,
-//       expertise_id: 1,
-//     },
-//     {
-//       username: 'janeDoe',
-//       password: 'password456',
-//       email: 'jane@example.com',
-//       administrator: true,
-//       expertise_id: 2,
-//     },
-//   ]);
-
-//   // Posts Seed
-//   const posts = await Post.bulkCreate([
-//     {
-//       title: 'HTML Basics',
-//       content: 'HTML stands for HyperText Markup Language.',
-//       username_id: 1,
-//       post_date: new Date(),
-//     },
-//     {
-//       title: 'Understanding JavaScript',
-//       content: 'JavaScript is a scripting language for Web pages.',
-//       username_id: 2,
-//       post_date: new Date(),
-//     },
-//   ]);
-
-//   // Comments Seed
-//   const comments = await Comment.bulkCreate([
-//     {
-//       commentText: 'This is very informative, thanks!',
-//       commented_at: new Date(),
-//       user_id: 2,
-//       post_id: 1,
-//     },
-//     {
-//       commentText: 'I had some doubts, but this cleared it up!',
-//       commented_at: new Date(),
-//       user_id: 1,
-//       post_id: 2,
-//     },
-//   ]);
-
-//   process.exit(0);
-// };
-
-// seedDatabase();
+seedDatabase();
