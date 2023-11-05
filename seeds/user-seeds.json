@@ -1,0 +1,32 @@
+[
+    {
+        "username": "HuiPan",
+        "email": "guaranstone@gmail.com",
+        "password": "@Ab1234567",
+        "isAdmin": "true"
+    },
+    {
+        "username": "TestUser01",
+        "email": "test_user01@gmail.com",
+        "password": "a1234567",
+        "isAdmin": "false"
+    },
+    {
+        "username": "TestUser02",
+        "email": "test_user02@gmail.com",
+        "password": "b1234567",
+        "isAdmin": "false"
+    },
+    {
+        "username": "TestUser03",
+        "email": "test_user03@gmail.com",
+        "password": "c1234567",
+        "isAdmin": "false"
+    },
+    {
+        "username": "TestUser04",
+        "email": "test_user04@gmail.com",
+        "password": "d1234567",
+        "isAdmin": "false"
+    }
+]

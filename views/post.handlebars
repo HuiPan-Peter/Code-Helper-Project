@@ -1,0 +1,71 @@
+<section class="hero">
+    <div class="hero-body">
+        <div class="container">
+            <section class="section">
+                <div class="columns">
+                    <div class="column is-8 is-offset-2">
+                        <div class="content is-medium">
+                            <h2 class="subtitle is-4">{{format_time
+                                    postData.createdAt
+                                }}</h2>
+                            <h1 class="title">{{postData.title}}</h1>
+                            <h6>by {{postData.user.username}}</h6>
+                            <p>{{postData.content}}</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <div class="is-divider"></div>
+            <div class="column is-8 is-offset-2">
+                <div class="field is-horizontal">
+                    <div class="field-label is-normal">
+                        <label class="label">Comment:</label>
+                    </div>
+                    <div class="field-body">
+                        <div class="field">
+                            <div class="control">
+                                <textarea
+                                    class="textarea comment-input"
+                                    placeholder="What are your thoughts on this blog post?"
+                                ></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="field is-horizontal">
+                    <div class="field-label">
+                        <!-- Left empty for spacing -->
+                    </div>
+                    <div class="field-body">
+                        <div class="field">
+                            <div class="control">
+                                <button
+                                    class="button is-success comment-submit"
+                                >
+                                    Submit
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="column is-8 is-offset-2" id="comment-section">
+                {{#each postData.comments as |cmt|}}
+                    <article class="message">
+                        <div class="message-body">
+                            {{comment}}
+                            <p class="has-text-right"><strong>-
+                                {{user.username}},
+                                {{format_time createdAt}}</strong>
+                                {{#if ../loggedInUserData.isAdmin}}
+                                    (<span class="delete-comment" data-id="{{id}}">Delete</span>)</p>
+                                {{/if}}
+                        </div>
+                    </article>
+                {{/each}}
+            </div>
+        </div>
+    </div>
+    <div class="current-post-id is-invisible">{{postData.id}}</div>
+</section>
+<script src="/js/post.js"></script>
