@@ -1,4 +1,4 @@
-<section class="hero has-background-grey-lighter">
+{{!-- <section class="hero has-background-grey-lighter">
     <div class="hero-body">
         <div class="container">
             <div class="columns is-centered">
@@ -86,4 +86,45 @@
         </div>
     </div>
 </section>
-<script src="/js/dashboard.js"></script>
+<script src="/js/dashboard.js"></script> --}}
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Code-Helper-Project</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body class="bg-white text-black">
+  <div class="flex flex-col h-screen justify-between">
+    <header class="flex justify-between items-center bg-blue-600 text-white p-4 shadow-lg">
+      <h1 class="text-2xl font-semibold">
+        <a href="/" class="hover:underline">Code-Helper-Project</a>
+      </h1>
+      <nav>
+        {{#if logged_in}}
+        <a href="/dashboard" class="mr-4 bg-green-600 p-2 rounded shadow-md hover:bg-green-700 transition-all">Dashboard</a>
+        <a href="/profile" class="mr-4 bg-green-600 p-2 rounded shadow-md hover:bg-green-700 transition-all">Profile</a>
+        <button id="logout" class="bg-green-600 p-2 rounded shadow-md hover:bg-green-700 transition-all">Logout</button>
+        {{else}}
+        <a href="/login" class="mr-4 bg-green-600 p-2 rounded shadow-md hover:bg-green-700 transition-all">Login</a>
+        <a href="/signup" class="bg-green-600 p-2 rounded shadow-md hover:bg-green-700 transition-all">Signup</a>
+        {{/if}}
+      </nav>
+    </header>
+
+    <main class="flex-grow container mx-auto mt-5 mb-5 p-5 bg-gray-100 rounded shadow-md">
+      {{{ body }}}
+    </main>
+
+    <footer class="bg-blue-600 text-white text-center py-4 shadow-lg">
+      <p>© 2023 Code-Helper-Project. All rights reserved.</p>
+    </footer>
+  </div>
+</body>
+
+</html>

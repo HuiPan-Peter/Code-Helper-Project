@@ -16,3 +16,4 @@ const withAuthAdmin = (req, res, next) => {
 };
 
 module.exports = [withAuth, withAuthAdmin];
+

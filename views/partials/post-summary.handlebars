@@ -1,4 +1,4 @@
-<section class="section">
+{{!-- <section class="section">
     <div class="columns is-variable is-8">
         <div class="column is-5 is-offset-1">
             <div class="content is-medium">
@@ -25,4 +25,65 @@
             </div>
         {{/if}}
     </div>
+</section> --}}
+
+{{!-- <section class="py-10">
+    <div class="flex flex-wrap mx-4 space-x-8">
+        <div class="w-full md:w-5/12">
+            <div class="mb-6">
+                <h2 class="text-sm text-gray-600">{{format_time 0.createdAt}}</h2>
+                <h1 class="text-xl font-semibold my-2">
+                    <a href="/post/{{0.id}}" class="text-black hover:text-gray-700 hover:underline">
+                        {{0.title}}
+                    </a>
+                </h1>
+                <p class="text-gray-800">{{format_summary 0.content}}</p>
+            </div>
+        </div>
+        {{#if 1.title}}
+        <div class="w-full md:w-5/12">
+            <div class="mb-6">
+                <h2 class="text-sm text-gray-600">{{format_time 1.createdAt}}</h2>
+                <h1 class="text-xl font-semibold my-2">
+                    <a href="/post/{{1.id}}" class="text-black hover:text-gray-700 hover:underline">
+                        {{1.title}}
+                    </a>
+                </h1>
+                <p class="text-gray-800">{{format_summary 1.content}}</p>
+            </div>
+        </div>
+        {{/if}}
+    </div>
+</section> --}}
+
+
+<section class="mt-10 mb-10">
+    <div class="flex flex-wrap -mx-2 overflow-hidden">
+
+        <!-- First Column -->
+        <div class="my-2 px-2 w-full md:w-1/2 overflow-hidden">
+            <div class="bg-teal-100 p-6 rounded-lg shadow-md">
+                <h2 class="text-gray-500 text-sm">{{format_time 0.createdAt}}</h2>
+                <h1 class="text-black text-xl mt-2 mb-4">
+                    <a href="/post/{{0.id}}" class="hover:underline">{{0.title}}</a>
+                </h1>
+                <p class="text-gray-800">{{format_summary 0.content}}</p>
+            </div>
+        </div>
+
+        <!-- Conditional Second Column -->
+        {{#if 1.title}}
+        <div class="my-2 px-2 w-full md:w-1/2 overflow-hidden">
+            <div class="bg-teal-100 p-6 rounded-lg shadow-md">
+                <h2 class="text-gray-500 text-sm">{{format_time 1.createdAt}}</h2>
+                <h1 class="text-black text-xl mt-2 mb-4">
+                    <a href="/post/{{1.id}}" class="hover:underline">{{1.title}}</a>
+                </h1>
+                <p class="text-gray-800">{{format_summary 1.content}}</p>
+            </div>
+        </div>
+        {{/if}}
+    </div>
 </section>
+
+
