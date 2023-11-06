@@ -89,42 +89,66 @@
 <script src="/js/dashboard.js"></script> --}}
 
 
-<!DOCTYPE html>
-<html lang="en">
+{{!-- Dashboard Handlebar Template --}}
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Code-Helper-Project</title>
-  <link rel="stylesheet" href="/css/style.css">
-</head>
+{{!-- Dashboard Handlebar Template --}}
 
-<body class="bg-white text-black">
-  <div class="flex flex-col h-screen justify-between">
-    <header class="flex justify-between items-center bg-blue-600 text-white p-4 shadow-lg">
-      <h1 class="text-2xl font-semibold">
-        <a href="/" class="hover:underline">Code-Helper-Project</a>
-      </h1>
-      <nav>
-        {{#if logged_in}}
-        <a href="/dashboard" class="mr-4 bg-green-600 p-2 rounded shadow-md hover:bg-green-700 transition-all">Dashboard</a>
-        <a href="/profile" class="mr-4 bg-green-600 p-2 rounded shadow-md hover:bg-green-700 transition-all">Profile</a>
-        <button id="logout" class="bg-green-600 p-2 rounded shadow-md hover:bg-green-700 transition-all">Logout</button>
-        {{else}}
-        <a href="/login" class="mr-4 bg-green-600 p-2 rounded shadow-md hover:bg-green-700 transition-all">Login</a>
-        <a href="/signup" class="bg-green-600 p-2 rounded shadow-md hover:bg-green-700 transition-all">Signup</a>
-        {{/if}}
-      </nav>
-    </header>
+{{!-- Dashboard Handlebar Template --}}
 
-    <main class="flex-grow container mx-auto mt-5 mb-5 p-5 bg-gray-100 rounded shadow-md">
-      {{{ body }}}
-    </main>
+{{!-- Dashboard Handlebar Template --}}
 
-    <footer class="bg-blue-600 text-white text-center py-4 shadow-lg">
-      <p>© 2023 Code-Helper-Project. All rights reserved.</p>
-    </footer>
-  </div>
-</body>
+<section class="bg-gray-200 py-10">
+    <div class="container mx-auto px-6">
+        <div class="flex justify-center">
+            <div class="w-full max-w-screen-xl">
+                <!-- New Post Form -->
+                <form class="bg-white p-6 shadow-md rounded mb-8">
+                    <label class="text-xl font-semibold mb-4 block">Create New Post</label>
+                    <div class="mb-4">
+                        <label class="block text-gray-600 mb-2">Subject / Title</label>
+                        <input type="text" placeholder="10 Ways Express.js Makes Creating REST API's Easier" class="w-full p-2 border rounded subject-input" required>
+                    </div>
+                    <div class="mb-4">
+                        <label class="block text-gray-600 mb-2">Content</label>
+                        <textarea class="w-full h-96 p-2 border rounded content-input" placeholder="Building an API is a rewarding way..." required></textarea>
+                    </div>
+                    <div class="flex justify-end mt-4">
+                        <button class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 submit-post">Submit</button>
+                    </div>
+                </form>
 
-</html>
+                <!-- Posts List Table -->
+                <div class="bg-white p-6 shadow-md rounded">
+                    <table class="min-w-full divide-y divide-gray-200">
+                        <thead class="bg-gray-500 text-white">
+                            <tr>
+                                <th class="w-1/6 py-2 px-3">ID</th>
+                                <th class="w-1/4 py-2 px-3">Title</th>
+                                <th class="w-1/4 py-2 px-3">Author</th>
+                                <th class="w-1/6 py-2 px-3">Created</th>
+                                <th class="w-1/6 py-2 px-3">Edit</th>
+                                <th class="w-1/6 py-2 px-3">Delete</th>
+                            </tr>
+                        </thead>
+                        <tbody class="bg-white divide-y divide-gray-200">
+                            {{#each posts}}
+                                <tr class="text-gray-700 hover:bg-gray-100 transition duration-200 ease-in-out transform hover:scale-105">
+                                    <td class="py-2 px-3">{{this.id}}</td>
+                                    <td class="py-2 px-3"><a href="/post/{{this.id}}" class="text-blue-500 hover:underline">{{this.title}}</a></td>
+                                    <td class="py-2 px-3">{{this.user.username}}</td>
+                                    <td class="py-2 px-3">{{format_time this.createdAt}}</td>
+                                    <td class="py-2 px-3"><a href="/edit/{{this.id}}" class="text-blue-500 hover:underline">Edit</a></td>
+                                    <td class="py-2 px-3"><a href="#" class="text-red-500 hover:underline delete-post" data-id="{{this.id}}">Delete</a></td>
+                                </tr>
+                            {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script src="/js/dashboard.js"></script>
+
+
