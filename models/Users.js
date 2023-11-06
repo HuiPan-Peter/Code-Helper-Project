@@ -37,13 +37,46 @@ User.init(
                 isAlphanumeric: true,
             },
         },
-        administrator: {
+        isAdministrator: {
             type: DataTypes.BOOLEAN,
             allowNull: false,
         },
         // TODO: look into arrays
-        // expertises: {
+        expertises: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            references: {
+                model: "expertise",
+                key: "id"
+              },
+              onDelete: "CASCADE"
+        }
+    },
+    {
+        hooks:{
+            beforeCreate: async (createPass) => {
+              createPass.password = await bcrypt.hash(createPass.password, 10);
+              return createPass;
+            },
+            beforeUpdate: async (updatePass) => {
+              if (updatePass.password === true) {
+                updatePass.password = await bcrypt.hash(updatePass.password, 10);
+                return updatePass;
+              } else {
+                return;
+              }
+            }
+        },
 
-        // }
-    }
+        sequelize,
+        timestamps: false,
+        freezeTableName: true,
+        underscored: true,
+        modelName: 'user',
+      }
 );
+
+User.hasMany(expertises);
+expertises.belongsTo(User);
+
+module.exports = User;
