@@ -13,7 +13,7 @@ const handlebars = expressHandlebars.create({ helpers });
 
 // Sets up the Express App
 const app = express();
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3017;
 
 // Set up sessions
 const sess = {
@@ -44,9 +44,13 @@ app.use(express.static(path.join(__dirname, "public")));
 // Sets up the routes
 app.use(controllers);
 
+app.use('/slider', express.static(path.join(__dirname, 'node_modules', 'keen-slider')));
+
 
 // Starts the server to begin listening with sequelize for db connection
 //force start should be false if using 'npm run seed' to populate and create db as it will recreate tables each server reload
 sequelize.sync({ force: false }).then(() => {
     app.listen(PORT, () => console.log(`Server listening on http://localhost:${PORT}`));
 });
+
+
