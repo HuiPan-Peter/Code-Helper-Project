@@ -1,0 +1,72 @@
+{{!-- <section class="hero has-background-grey-lighter">
+    <div class="hero-body">
+        <div class="container">
+            <div class="columns is-centered">
+                <div class="column">
+                    <form action="" class="box">
+                        <label class="label is-large" for="" class="label">Edit
+                            Blog Post</label>
+                        <div class="field">
+                            <label for="" class="label">Subject / Title</label>
+                            <div class="control">
+                                <input
+                                    type="text"
+                                    placeholder="10 Ways Express.js Makes Creating REST API's Easier"
+                                    class="input subject-input"
+                                    value="{{postData.title}}"
+                                    required
+                                />
+                            </div>
+                        </div>
+                        <div class="field-body">
+                            <div class="field">
+                                <label for="" class="label">Content</label>
+                                <div class="control">
+                                    <textarea
+                                        class="textarea content-input"
+                                        placeholder="Building an API is a rewarding way to allow data to flow between apps and create compelling functionality in your latest project without having to start from scratch..."
+                                        required
+                                    >{{postData.content}}</textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="field is-grouped is-grouped-right mt-3">
+                            <button class="button is-success edit-submit">
+                                Submit
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="current-post-id is-invisible">{{postData.id}}</div>
+</section>
+<script src="/js/edit.js"></script> --}}
+
+<section class="h-screen bg-gray-200 flex items-center justify-center px-4 sm:px-6 lg:px-8">
+    <div class="max-w-3xl w-full bg-white p-8 rounded-lg shadow-md">
+        <h1 class="text-3xl font-bold mb-6 text-center">Edit Blog Post</h1>
+
+        <form action="" class="space-y-6">
+            <div class="relative">
+                <label for="subject" class="block text-lg font-medium text-gray-700">Subject / Title</label>
+                <input type="text" id="subject" name="subject" placeholder="10 Ways Express.js Makes Creating REST API's Easier" class="subject-input mt-2 block w-full pl-4 pr-12 py-3 border rounded-md focus:ring-green-500 focus:border-green-500" value="{{postData.title}}" required />
+            </div>
+
+            <div class="relative">
+                <label for="content" class="block text-lg font-medium text-gray-700">Content</label>
+                <textarea id="content" name="content" rows="10" class="content-input mt-2 block w-full pl-4 pr-12 py-3 border rounded-md focus:ring-green-500 focus:border-green-500" placeholder="Building an API is a rewarding way to allow data to flow between apps and create compelling functionality in your latest project without having to start from scratch..." required>{{postData.content}}</textarea>
+            </div>
+
+            <div class="flex justify-end">
+                <button type="submit" class="edit-submit bg-green-500 hover:bg-green-600 text-white font-semibold py-3 px-6 rounded-md transition">Submit</button>
+            </div>
+        </form>
+    </div>
+    <!-- This hidden div contains the current post ID. JS uses it to fetch the correct post -->
+    <div class="current-post-id hidden">{{postData.id}}</div>
+</section>
+<script src="/js/edit.js"></script>
+
+

@@ -1,0 +1,31 @@
+{
+    "name": "code-helper",
+    "version": "1.0.0",
+    "description": "",
+    "main": "server.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "node server.js",
+        "seed": "node seeds/index.js",
+        "dev": "nodemon server.js",
+        "build:css": "postcss public/css/tailwind.css -o public/css/style.css"
+    },
+    "author": "HuiPan",
+    "license": "MIT",
+    "dependencies": {
+        "bcrypt": "^5.0.1",
+        "connect-session-sequelize": "^7.1.2",
+        "dotenv": "^10.0.0",
+        "express": "^4.17.1",
+        "express-handlebars": "^5.3.3",
+        "express-session": "^1.17.2",
+        "keen-slider": "^6.8.6",
+        "mysql2": "^2.3.0",
+        "sequelize": "^6.34.0"
+    },
+    "devDependencies": {
+        "autoprefixer": "^10.4.16",
+        "postcss": "^8.4.31",
+        "tailwindcss": "^3.3.5"
+    }
+}

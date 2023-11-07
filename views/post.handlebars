@@ -1,0 +1,125 @@
+{{!-- <section class="hero">
+    <div class="hero-body">
+        <div class="container">
+            <section class="section">
+                <div class="columns">
+                    <div class="column is-8 is-offset-2">
+                        <div class="content is-medium">
+                            <h2 class="subtitle is-4">{{format_time
+                                    postData.createdAt
+                                }}</h2>
+                            <h1 class="title">{{postData.title}}</h1>
+                            <h6>by {{postData.user.username}}</h6>
+                            <p>{{postData.content}}</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <div class="is-divider"></div>
+            <div class="column is-8 is-offset-2">
+                <div class="field is-horizontal">
+                    <div class="field-label is-normal">
+                        <label class="label">Comment:</label>
+                    </div>
+                    <div class="field-body">
+                        <div class="field">
+                            <div class="control">
+                                <textarea
+                                    class="textarea comment-input"
+                                    placeholder="What are your thoughts on this blog post?"
+                                ></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="field is-horizontal">
+                    <div class="field-label">
+                        <!-- Left empty for spacing -->
+                    </div>
+                    <div class="field-body">
+                        <div class="field">
+                            <div class="control">
+                                <button
+                                    class="button is-success comment-submit"
+                                >
+                                    Submit
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="column is-8 is-offset-2" id="comment-section">
+                {{#each postData.comments as |cmt|}}
+                    <article class="message">
+                        <div class="message-body">
+                            {{comment}}
+                            <p class="has-text-right"><strong>-
+                                {{user.username}},
+                                {{format_time createdAt}}</strong>
+                                {{#if ../loggedInUserData.isAdmin}}
+                                    (<span class="delete-comment" data-id="{{id}}">Delete</span>)</p>
+                                {{/if}}
+                        </div>
+                    </article>
+                {{/each}}
+            </div>
+        </div>
+    </div>
+    <div class="current-post-id is-invisible">{{postData.id}}</div>
+</section>
+<script src="/js/post.js"></script> --}}
+
+
+<class="bg-gray-200">
+    <section class="hero h-screen flex items-center justify-center">
+        <div class="container bg-white p-8 rounded-lg shadow-md w-full md:w-3/4 lg:w-2/3">
+            <div class="mb-8">
+                <h2 class="text-gray-600 text-sm mb-2">{{format_time postData.createdAt}}</h2>
+                <h1 class="text-2xl font-semibold mb-2">{{postData.title}}</h1>
+                <h6 class="text-gray-500">by {{postData.user.username}}</h6>
+            </div>
+            <div class="content mb-10">
+                <p>{{postData.content}}</p>
+            </div>
+            
+            <div class="border-t border-gray-300 my-6"></div>
+
+            <!-- Adding the hidden fields to capture logged-in user ID and current post ID -->
+            <span class="logged-in-user-id hidden">{{loggedInUserData.id}}</span>
+            <span class="current-post-id hidden">{{postData.id}}</span>
+
+            <div class="mb-6">
+                <label for="comment-input" class="block text-sm font-medium text-gray-700">Comment:</label>
+                <textarea
+                    id="comment-input"
+                    class="mt-1 p-2 w-full border rounded-md comment-input"
+                    placeholder="What are your thoughts on this blog post?"
+                ></textarea>
+            </div>
+            
+            <div class="mb-6">
+                <button class="bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded-md comment-submit">Submit</button>
+            </div>
+
+            <div id="comment-section">
+                {{#each postData.comments as |cmt|}}
+                    <div class="message mb-4 p-4 bg-gray-100 rounded-md">
+                        <!-- Updated to fetch comment content from the correct variable -->
+                        <p class="mb-2">{{cmt.comment}}</p>
+                        <p class="text-right text-sm text-gray-500">
+                            <!-- Updated to fetch username and creation time from the correct variable -->
+                            <strong>- {{cmt.user.username}}, {{format_time cmt.createdAt}}</strong>
+                            {{#if ../loggedInUserData.isAdmin}}
+                                <span class="delete-comment text-red-500 cursor-pointer ml-2" data-id="{{cmt.id}}">Delete</span>
+                            {{/if}}
+                        </p>
+                    </div>
+                {{/each}}
+            </div>
+        </div>
+    </section>
+    <script src="/js/post.js"></script>
+
+
+
