@@ -13,7 +13,7 @@ const handlebars = expressHandlebars.create({ helpers });
 
 // Sets up the Express App
 const app = express();
-const PORT = process.env.PORT || 3017;
+const PORT = process.env.PORT || 3019;
 
 // Set up sessions
 const sess = {

@@ -7,6 +7,7 @@ const postRoutes = require("./post-routes");
 const signupRoutes = require("./signup-routes");
 const logoutRoutes = require("./logout-routes");
 const dashboardRoutes = require("./dashboard-routes");
+const userDashboardRoutes = require("./userDashboard-routes");
 const editRoutes = require("./edit-routes");
 
 //use each of the routes files in the controllers folder
@@ -17,6 +18,6 @@ router.use("/post", postRoutes);
 router.use("/signup", signupRoutes);
 router.use("/logout", logoutRoutes);
 router.use("/dashboard", dashboardRoutes);
+router.use("/userDashboard", userDashboardRoutes);
 router.use("/edit", editRoutes);
-
 module.exports = router;
