@@ -1,4 +1,4 @@
-  <!-- Image -->
+  {{!-- <!-- Image -->
   <section class="hero ">
     <div class="hero-body">
       <div class="container">
@@ -32,4 +32,48 @@
       </div>
     </div>
   </section>
-  <script src='/js/index.js'></script>
+  <script src='/js/index.js'></script> --}}
+
+{{!-- Slider Section --}}
+<!-- Slider Section -->
+
+<section class="keen-slider">
+  <div class="keen-slider__slide number-slide1 flex items-center justify-center" style="background-image: url('/path-to-your-image/slide-background.jpg'); background-size: cover; background-position: center;">
+    <div class="flex flex-col justify-center items-center h-full text-center p-10 bg-white bg-opacity-75">
+      <img src="../images/logo.png" alt="Logo" class="mb-8" /> <!-- Logo Image -->
+      <h2 class="text-4xl font-bold mb-6 text-black">Welcome to Our Community</h2>
+      <p class="text-xl mb-8 text-black">Join us and stay updated with the latest news.</p>
+      <a href="/sign-up" class="text-lg font-bold py-3 px-6 bg-blue-500 text-white rounded hover:bg-blue-700 transition duration-300 ease-in-out mb-8">Sign Up</a>
+    </div>
+  </div>
+</section>
+
+
+<section class="bg-white py-10">
+  <div class="container mx-auto px-4">
+    <h2 class="text-2xl font-semibold text-gray-800 mb-6">Latest member posts</h2>
+    {{#each posts as |post|}}
+        {{> post-summary}}
+    {{/each}}
+  </div>
+</section>
+
+{{!-- Contact Section --}}
+<section class="bg-blue-100 py-12">
+  <div class="container mx-auto px-4">
+    <div class="text-center mb-10">
+      <h2 class="text-3xl font-semibold text-gray-800 mb-4">Get in Touch</h2>
+      <p class="text-gray-600">Have questions or want to contribute? We'd love to hear from you.</p>
+    </div>
+    <div class="text-center">
+      <a href="/contact" class="inline-block bg-green-500 text-white font-bold py-3 px-6 rounded hover:bg-green-600 transition-colors duration-300 mt-6">
+        Contact Us
+      </a>
+    </div>
+  </div>
+</section>
+
+<script src="/public/js/slider.js"></script>
+
+
+
