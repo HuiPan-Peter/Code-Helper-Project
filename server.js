@@ -13,7 +13,7 @@ const handlebars = expressHandlebars.create({ helpers });
 
 // Sets up the Express App
 const app = express();
-const PORT = process.env.PORT || 3019;
+const PORT = process.env.PORT || 3022;
 
 // Set up sessions
 const sess = {
@@ -52,5 +52,6 @@ app.use('/slider', express.static(path.join(__dirname, 'node_modules', 'keen-sli
 sequelize.sync({ force: false }).then(() => {
     app.listen(PORT, () => console.log(`Server listening on http://localhost:${PORT}`));
 });
+
 
 

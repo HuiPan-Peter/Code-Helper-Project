@@ -72,3 +72,5 @@ const deleteLinks = document.querySelectorAll(".delete-comment");
 deleteLinks.forEach((el) =>
     el.addEventListener("click", (event) => deleteCommentHandler(event))
 );
+
+

@@ -1,67 +1,92 @@
-// userDashboard.js
-
-// userDashboard.js
-
-// Function to submit a new post
+//create post from client to API
 const submitPostHandler = async (event) => {
-    event.preventDefault();
-  
-    const title = document.querySelector(".subject-input").value.trim();
-    const content = document.querySelector(".content-input").value.trim();
-    const author_id = document.querySelector(".logged-in-user-id").innerHTML;
-  
-    if (!author_id) {
-      alert("You must be logged in to post. Please try again.");
-    } else {
+  event.preventDefault();
+
+  const title = document.querySelector(".subject-input").value.trim();
+  const content = document.querySelector(".content-input").value.trim();
+  const author_id = document.querySelector(".logged-in-user-id").innerHTML; //need id of logged in user
+  if (!author_id) {
+      alert(
+          "You can't post if not logged in. Please logout and in again and then try again."
+      );
+  } else {
       if (title && content) {
-        try {
-          const response = await fetch("/api/user/post/", {
-            method: "POST",
-            body: JSON.stringify({ title, content, author_id }),
-            headers: { "Content-Type": "application/json" },
+          const response = await fetch("/api/post/", {
+              method: "POST",
+              body: JSON.stringify({ title, content, author_id }),
+              headers: { "Content-Type": "application/json" },
           });
           if (response.ok) {
-            document.location.replace("/userDashboard");
+              document.location.replace("/userDashboard");
           } else {
-            alert(`Failed to submit post. ${response.status}: ${response.statusText}`);
+              alert(
+                  "Failed to submit post. " +
+                      response.status +
+                      ": " +
+                      response.statusText
+              );
           }
-        } catch (error) {
-          console.error('Error submitting post:', error);
-          alert("An error occurred while trying to submit the post.");
-        }
       } else {
-        alert("Please fill out all fields.");
+          alert("Please fill out all fields.");
       }
-    }
-  };
+  }
+};
   
-  // Function to handle post deletion
-  const deletePostHandler = async (event) => {
-    if (event.target.hasAttribute("data-id")) {
+  //delete post from client to API
+const deletePostHandler = async (event) => {
+  event.preventDefault();
+
+  if (event.target.hasAttribute("data-id")) {
       const deletePostId = event.target.getAttribute("data-id");
   
-      try {
-        const response = await fetch(`/api/user/post/${deletePostId}`, {
-          method: "DELETE",
-        });
-        if (response.ok) {
-          document.location.reload();
-        } else {
-          alert(`Failed to delete post. ${response.status}: ${response.statusText}`);
-        }
-      } catch (error) {
-        console.error('Error deleting post:', error);
-        alert("An error occurred while trying to delete the post.");
+      const response = await fetch(`/api/post/${deletePostId}`, {
+        method: "DELETE",
+      });
+  
+      if (response.ok) {
+        document.location.reload();
+      } else {
+        alert(response.statusText);
       }
+      return
     }
-  };
+  const deletePostId = window.location.toString().split('/')[window.location.toString().split('/').length - 1];
   
-  // Add event listeners for post submission and deletion
-  document.querySelector(".submit-post").addEventListener("click", submitPostHandler);
+  if (deletePostId) {
+      const response = await fetch(`/api/post/${deletePostId}`, {
+          method: 'DELETE',
+          body: JSON.stringify({
+              post_id: deletePostId
+          }),
+          headers: {
+              'Content-Type': 'application/json'
+          }
+      });
+      if (response.ok) {
+          document.location.replace("/dashboard");
+      } else {
+          alert(
+              "Failed to delete post. " +
+                  response.status +
+                  ": " +
+                  response.statusText
+          );
+      }
+  }
+};
+
+//add event listeners
+document.querySelector(".submit-post").addEventListener("click", submitPostHandler);
+// document.querySelector(".delete-post").addEventListener("click", deletePostHandler);
+
+const deleteButtons = document.querySelectorAll(".delete-post");
+deleteButtons.forEach((el) =>
+  el.addEventListener('click', deletePostHandler)
+);
+// const deleteButtons = document.querySelectorAll(".delete-post");
+// deleteButtons.forEach((el) =>
+//     el.addEventListener("click", (event) => deletePostHandler(event))
+// );
   
-  const deleteButtons = document.querySelectorAll(".delete-post");
-  deleteButtons.forEach((button) => {
-    button.addEventListener('click', deletePostHandler);
-  });
   
-  
+
