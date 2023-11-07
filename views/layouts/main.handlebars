@@ -212,7 +212,7 @@
 
 </html> --}}
 
-<!DOCTYPE html>
+{{!-- <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -236,13 +236,76 @@
             <div class="space-x-4">
                 <a href="/" class="hover:underline">Home</a>
                 {{#if loggedIn}}
-                {{#if loggedInUserData.isAdmin}}
-                <a href="/dashboard" class="hover:underline">Dashboard</a>
-                {{/if}}
-                <a href="/logout/" class="hover:underline">Logout</a>
+                    {{#if loggedInUserData.isAdmin}}
+                        <a href="/dashboard" class="hover:underline">Dashboard</a>
+                    {{else}}
+                        <a href="/userDashboard" class="hover:underline">userDashboard</a>
+                    {{/if}}
+                    <a href="/logout/" class="hover:underline">Logout</a>
                 {{else}}
-                <a href="/login/" class="hover:underline">Login</a>
-                <a href="/signup/" class="hover:underline">Signup</a>
+                    <a href="/login/" class="hover:underline">Login</a>
+                    <a href="/signup/" class="hover:underline">Signup</a>
+                {{/if}}
+            </div>
+        </div>
+    </nav>
+    <!-- END NAV -->
+    
+    <!-- Main Content -->
+    <main class="container mx-auto mt-10 mb-10 p-4 rounded-lg shadow-lg">
+        {{{body}}}
+    </main>
+    
+    <!-- Footer -->
+    <footer class="bg-indigo-600 text-white text-center py-4 mt-10">
+        <p class="mb-2">
+            <strong>CODE HELPER</strong> - 
+            <a href="https://github.com/HuiPan-Peter/Code-Helper-Project" target="_blank" class="underline">GitHub Repository</a> - 
+            using Node.js, Express.js, Handlebars.js, Sequelize.js, and MySQL
+        </p>
+        <div class="logged-in-user-id hidden">{{loggedInUserData.id}}</div>
+    </footer>
+    
+    <!-- Scripts -->
+    <script src="/js/main.js"></script>
+</body>
+
+</html> --}}
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>CODE HELPER</title>
+    <!-- Include Tailwind CSS -->
+    <link href="/css/style.css" rel="stylesheet">
+    <script src="../js/config/apiConfig.js"></script>
+</head>
+
+<body class="bg-gray-100 text-gray-800 font-sans leading-normal tracking-normal">
+    <!-- START NAV -->
+    <nav class="bg-indigo-600 p-4 text-white shadow-md something">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="/" class="flex items-center space-x-2">
+                <img class="h-8 w-24" src="../images/logo.png" alt="Logo" />
+                <span class="text-2xl font-semibold">CODE HELPER</span>
+            </a>
+            <div class="space-x-4">
+                <a href="/" class="hover:underline">Home</a>
+                {{#if loggedIn}}
+                    {{#if loggedInUserData.isAdmin}}
+                        <a href="/dashboard" class="hover:underline">Dashboard</a>
+                    {{else}}
+                       <a href="/userDashboard" class="hover:underline">User Dashboard</a>
+                    {{/if}}
+                    <a href="/logout/" class="hover:underline">Logout</a>
+                {{else}}
+                    <a href="/login/" class="hover:underline">Login</a>
+                    <a href="/signup/" class="hover:underline">Signup</a>
                 {{/if}}
             </div>
         </div>
@@ -269,4 +332,6 @@
 </body>
 
 </html>
+
+
 
