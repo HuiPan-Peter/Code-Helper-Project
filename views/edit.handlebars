@@ -66,6 +66,10 @@
     </div>
     <!-- This hidden div contains the current post ID. JS uses it to fetch the correct post -->
     <div class="current-post-id hidden">{{postData.id}}</div>
+    {{!-- Justin current working on fixing after edit to stay in current dashboard --}}
+    <div class="current-user-id hidden">{{userData.id}}</div>
+    <div class="current-user-isAdmin hidden">{{userData.isAdmin}}</div>
+    {{!--  --}}
 </section>
 <script src="/js/edit.js"></script>
 
