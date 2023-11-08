@@ -283,35 +283,34 @@
     <title>CODE HELPER</title>
     <!-- Include Tailwind CSS -->
     <link href="/css/style.css" rel="stylesheet">
+    {{!-- <link rel="stylesheet" href="./public/css/tailwind.css"> --}}
     <script src="../js/config/apiConfig.js"></script>
+    
 </head>
 
-<body class="bg-gray-100 text-gray-800 font-sans leading-normal tracking-normal">
-    <!-- START NAV -->
-    <nav class="bg-indigo-600 p-4 text-white shadow-md something">
-        <div class="container mx-auto flex justify-between items-center">
-            <a href="/" class="flex items-center space-x-2">
-               <img src="../images/logo-blue.png" alt="Logo" style="width: 200px; height: 100x;" class="mb-2 mt-2 rounded-lg" />
-               <span class="text-2xl font-semibold"></span>
-           </a>
+<nav class="bg-custom-color text-black">
+  <div class="container mx-auto flex justify-between items-center">
+    <a href="/" class="flex items-center space-x-2">
+      <img src="../images/logo-blue.png" alt="Logo" style="width: 200px; height: 100x;" class="mb-2 mt-2 rounded-lg" />
+      <span class="text-2xl font-semibold"></span>
+    </a>
+    <div class="space-x-4">
+      <a href="/" class="hover:underline">Home</a>
+      {{#if loggedIn}}
+        {{#if loggedInUserData.isAdmin}}
+          <a href="/dashboard" class="hover:underline">Dashboard</a>
+        {{else}}
+          <a href="/userDashboard" class="hover:underline">User Dashboard</a>
+        {{/if}}
+        <a href="/logout/" class="hover:underline">Logout</a>
+      {{else}}
+        <a href="/login/" class="hover:underline">Login</a>
+        <a href="/signup/" class="hover:underline">Signup</a>
+      {{/if}}
+    </div>
+  </div>
+</nav>
 
-            </a>
-            <div class="space-x-4">
-                <a href="/" class="hover:underline">Home</a>
-                {{#if loggedIn}}
-                    {{#if loggedInUserData.isAdmin}}
-                        <a href="/dashboard" class="hover:underline">Dashboard</a>
-                    {{else}}
-                       <a href="/userDashboard" class="hover:underline">User Dashboard</a>
-                    {{/if}}
-                    <a href="/logout/" class="hover:underline">Logout</a>
-                {{else}}
-                    <a href="/login/" class="hover:underline">Login</a>
-                    <a href="/signup/" class="hover:underline">Signup</a>
-                {{/if}}
-            </div>
-        </div>
-    </nav>
     <!-- END NAV -->
     
     <!-- Main Content -->
