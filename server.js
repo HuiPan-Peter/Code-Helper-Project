@@ -51,9 +51,9 @@ app.use('/slider', express.static(path.join(__dirname, 'node_modules', 'keen-sli
 
 // Passing the postData to index.handlebar
 app.get("/", (req, res) => {
-    res.render("index", { posts: postsData });
+    const firstThreePosts = postsData.slice(0, 3); 
+    res.render("index", { posts: firstThreePosts });
   });
-
 // Starts the server to begin listening with sequelize for db connection
 //force start should be false if using 'npm run seed' to populate and create db as it will recreate tables each server reload
 sequelize.sync({ force: false }).then(() => {
