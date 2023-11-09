@@ -1,3 +1,9 @@
+# <img src="./public/images/logo.png">
+## Introduction
+**CODE HELPER** is a state-of-the-art platform tailored for developers to collaborate seamlessly on projects. The platform empowers developers to offer, accept, and manage projects based on expertise and financial considerations, be it collaborative, paid, or open-source.
+
+---
+
 ## Table of Contents
 - [Project Overview](#project-overview)
 - [Objectives](#objectives)
