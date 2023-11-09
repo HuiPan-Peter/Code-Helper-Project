@@ -1,3 +1,6 @@
+/* Ensuring that the style.css gets populated with tailwind css. */
+/* Please refer to tailwind.config.js and postcss.config.js */
+
 @tailwind base;
 
 @tailwind components;

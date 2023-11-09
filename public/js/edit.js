@@ -7,10 +7,6 @@ const submitPostHandler = async (event) => {
     const author_id = document.querySelector(".logged-in-user-id").innerHTML; //need id of logged in user
     const post_id = document.querySelector(".current-post-id").innerHTML;
 
-    // Justin current working on fixing after edit to stay in current dashboard
-    const user_id = document.querySelector(".current-user-id").innerHTML;
-    const user_isAdmin = document.querySelector(".current-user-isAdmin").innerHTML;
-    //
 
     if (!author_id) {
         alert(
@@ -25,13 +21,7 @@ const submitPostHandler = async (event) => {
                 headers: { "Content-Type": "application/json" },
             });
             if (response.ok) {
-                // Justin current working on fixing after edit to stay in current dashboard
-                if (user_id === author_id && user_isAdmin) {
-                    document.location.replace("/dashboard");
-                } else if (user_id === author_id && !user_isAdmin){
-                    document.location.replace("/userDashboard");
-                }
-                // 
+                document.location.replace("/dashboard");
             } else {
                 alert(
                     "Failed to update post. " +

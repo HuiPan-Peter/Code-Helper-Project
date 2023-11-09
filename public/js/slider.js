@@ -1,3 +1,5 @@
+// Keen Slider javascript code for enabling the slide show slider.
+
 document.addEventListener("DOMContentLoaded", () => {
     // Keen Slider Initialization
     const sliderElement = document.getElementById("keen-slider");
