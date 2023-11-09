@@ -6,6 +6,9 @@ const path = require("path");
 const SequelizeStore = require("connect-session-sequelize")(session.Store);
 const sequelize = require("./config/connection");
 const controllers = require("./controllers");
+const fs = require("fs");
+const postsData = JSON.parse(fs.readFileSync("post-seeds.json"));
+
 // Import the custom helper methods
 const helpers = require("./utils/helpers");
 // Incorporate the custom helper methods: ./utils/helpers.js
@@ -46,6 +49,10 @@ app.use(controllers);
 
 app.use('/slider', express.static(path.join(__dirname, 'node_modules', 'keen-slider')));
 
+// Passing the postData to index.handlebar
+app.get("/", (req, res) => {
+    res.render("index", { posts: postsData });
+  });
 
 // Starts the server to begin listening with sequelize for db connection
 //force start should be false if using 'npm run seed' to populate and create db as it will recreate tables each server reload

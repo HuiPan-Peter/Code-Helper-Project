@@ -36,6 +36,13 @@
 
 {{!-- Slider Section --}}
 <!-- Slider Section -->
+<link
+  rel="stylesheet"
+  href="https://unpkg.com/@splidejs/splide@3.0.7/dist/css/splide.min.css"
+/>
+
+<script src="https://unpkg.com/@splidejs/splide@3.0.7/dist/js/splide.min.js"></script>
+
 
 <section class="keen-slider">
   <div class="keen-slider__slide number-slide1 flex items-center justify-center" style="background-image: url('/path-to-your-image/slide-background.jpg'); background-size: cover; background-position: center;">
@@ -49,17 +56,35 @@
 </section>
 
 
-<section class="bg-white py-10">
-  <div class="container mx-auto px-4 flex justify-center">
-    <div class="max-w-xl">
-      <h2 class="text-2xl font-semibold text-gray-800 mb-6">Latest member posts</h2>
-      {{#each posts as |post|}}
-        {{> post-summary}}
-      {{/each}}
+<section class="bg-white py-10 flex-1 flex justify-center items-center">
+  <div class="container mx-auto px-4">
+    <div class="splide" id="memberPostCarousel">
+      <div class="splide__track">
+        <ul class="splide__list">
+          {{#each posts}}
+            <li class="splide__slide">
+              <div class="bg-white p-4 rounded-lg shadow-md mb-4">
+                <h2 class="text-gray-500 text-sm">Posted by Author {{author_id}}</h2>
+                <h1 class="text-black text-lg mt-2 mb-2">{{title}}</h1>
+                <p class="text-gray-800">{{content}}</p>
+              </div>
+            </li>
+          {{/each}}
+        </ul>
+      </div>
     </div>
   </div>
 </section>
 
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    new Splide("#memberPostCarousel", {
+      type: "loop", // Change this to "fade" for a fade effect
+      perPage: 3,   // Display 3 posts at a time
+      pagination: false, // Remove if you want pagination
+    }).mount();
+  });
+</script>
 
 
 {{!-- Contact Section --}}
