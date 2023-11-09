@@ -1,4 +1,3 @@
-/** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
     './public/**/*.{handlebars,html,js}',
@@ -10,10 +9,11 @@ module.exports = {
   darkMode: 'class',
   theme: {
     extend: {
-      colors: {
-        'custom-color': '#1e3a8a',
+      backgroundColor: {
+        'navyblue': '#000080',
       },
     },
   },
-  plugins: [require('tw-elements/dist/plugin.cjs')],
+  plugins: [],
 };
+

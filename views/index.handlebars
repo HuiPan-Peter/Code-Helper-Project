@@ -36,16 +36,18 @@
 
 {{!-- Slider Section --}}
 <!-- Slider Section -->
+<link
+  rel="stylesheet"
+  href="https://unpkg.com/@splidejs/splide@3.0.7/dist/css/splide.min.css"
+/>
+
+<script src="https://unpkg.com/@splidejs/splide@3.0.7/dist/js/splide.min.js"></script>
 
 
-<!--- code for homepage heading as well as page structure -->
-<section class="keen-slider flex flex-col h-screen">
-  <div class="keen-slider__slide number-slide1 flex-1 items-center justify-center" style="background-image: url('/path-to-your-image/slide-background.jpg'); background-size: cover; background-position: center;">
-    <div class="flex flex-col justify-center items-center text-center p-10 bg-white bg-opacity-75">
-    <img src="../images/logo.png" alt="Logo" style="width: 500px; height: 150x;" class="mb-6" />
-
-
-
+<section class="keen-slider">
+  <div class="keen-slider__slide number-slide1 flex items-center justify-center" style="background-color: white;"> <!-- Set the background color to white -->
+    <div class="flex flex-col justify-center items-center h-full text-center p-10 bg-white"> <!-- Set the background color to white and remove opacity -->
+      <img src="../images/logo.png" alt="Logo" style="width: 400px; height: 100px;" class="mb-6" /> <!-- Adjust the margin-bottom to provide spacing -->
       <h2 class="text-4xl font-bold mb-6 text-black">Welcome to Our Community</h2>
       <p class="text-xl mb-8 text-black">Join us and stay updated with the latest news!</p>
       <a href="/sign-up" class="text-lg font-bold py-3 px-6 bg-blue-500 text-white rounded hover:bg-blue-700 transition duration-300 ease-in-out mb-8">Sign Up</a>
@@ -53,16 +55,44 @@
   </div>
 </section>
 
+
 <section class="bg-white py-10 flex-1 flex justify-center items-center">
   <div class="container mx-auto px-4">
-    <div class="max-w-xl text-center"> <!-- Added text-center class -->
-      <h2 class="text-2xl font-semibold text-gray-800 mb-6">Latest member posts</h2>
-      {{#each posts as |post|}}
-        {{> post-summary}}
-      {{/each}}
+    <div class="splide" id="memberPostCarousel">
+      <div class="splide__track">
+        <ul class="splide__list">
+          {{#each posts}}
+            <li class="splide__slide">
+              <div class="bg-white p-4 rounded-lg shadow-md mb-4">
+                <h2 class="text-gray-500 text-sm">Posted by Author {{author_id}}</h2>
+                <h1 class="text-black text-lg mt-2 mb-2">{{title}}</h1>
+                <p class="text-gray-800">{{content}}</p>
+              </div>
+            </li>
+          {{/each}}
+        </ul>
+      </div>
     </div>
   </div> 
 </section>
+
+
+
+
+
+
+
+
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    new Splide("#memberPostCarousel", {
+      type: "loop", // Change this to "fade" for a fade effect
+      perPage: 3,   // Display 3 posts at a time
+      pagination: false, // Remove if you want pagination
+    }).mount();
+  });
+</script>
 
 
 {{!-- Contact Section --}}
