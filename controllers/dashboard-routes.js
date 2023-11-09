@@ -1,8 +1,11 @@
+// Routes for admin dashboard
+
 const router = require("express").Router();
 const { Post, User } = require("../models");
+const isAdmin = require("../utils/admin");
 const withAuth = require("../utils/auth");
 
-router.get("/", withAuth, async (req, res) => {
+router.get("/", withAuth, isAdmin, async (req, res) => {
     console.log('======dashboard-routes invoked=====');
     console.log('inside admin', req)
     console.log('res', res)
@@ -29,4 +32,3 @@ router.get("/", withAuth, async (req, res) => {
 });
 
 module.exports = router;
-

@@ -1,41 +1,5 @@
-  {{!-- <!-- Image -->
-  <section class="hero ">
-    <div class="hero-body">
-      <div class="container">
-        <section class="section">
-          <div class="columns">
-            <div class="column is-8 is-offset-2">
-              <div class="content is-medium">
-                <h2 class="subtitle is-4">{{format_time posts.0.0.createdAt}}</h2>
-                <h1 class="title"><a href="/post/{{posts.0.0.id}}">{{posts.0.0.title}}</a></h1>
-                <h6>by {{posts.0.0.user.username}}</h6>
-                <p>{{posts.0.0.content}}</p>
-              </div>
-            </div>
-          </div>
-        </section>
-        <div class="is-divider"></div>
-      </div>
-    </div>
-  </section>
-  <!-- Articles -->
-  <section class="hero ">
-    <div class="hero-body-neg">
-      <div class="container">
-        {{#each posts as |post|}}
-          {{#if @first}}
-            <!-- Don't post 1st one because it goes up top -->
-          {{else}}
-            {{> post-summary}}
-          {{/if}}
-        {{/each}}
-      </div>
-    </div>
-  </section>
-  <script src='/js/index.js'></script> --}}
 
-{{!-- Slider Section --}}
-<!-- Slider Section -->
+<!-- This view is for the Slider Section, a third party library to enable slide shows on the main page -->
 
 <section class="keen-slider">
   <div class="keen-slider__slide number-slide1 flex items-center justify-center" style="background-image: url('/path-to-your-image/slide-background.jpg'); background-size: cover; background-position: center;">
@@ -73,7 +37,7 @@
   </div>
 </section>
 
-<script src="/public/js/slider.js"></script>
+<script src="/js/slider.js"></script>
 
 
 

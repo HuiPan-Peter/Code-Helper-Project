@@ -14,6 +14,7 @@ router.post("/", async (req, res) => {
         req.session.save(() => {
             req.session.loggedIn = true;
             req.session.loggedInUserData = dbUserData;
+            req.session.isAdmin = dbUserData.isAdmin;
             return res.status(200).json(dbUserData);
         });
     } catch (err) {
@@ -51,6 +52,7 @@ router.post("/login", async (req, res) => {
         req.session.save(() => {
             req.session.loggedIn = true;
             req.session.loggedInUserData = dbUserData;
+            req.session.isAdmin = dbUserData.isAdmin
             console.log("🚀", req.session.cookie);
 
             res.status(200).json({
