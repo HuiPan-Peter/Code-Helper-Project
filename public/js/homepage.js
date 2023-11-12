@@ -1,46 +1,51 @@
 document.addEventListener("DOMContentLoaded", function () {
   // Fetch posts from the JSON file
-  fetch("/seeds/post-seeds.json")
-    .then((response) => response.json())
-    .then((posts) => {
-      const carouselInner = document.getElementById("postsContainer");
-
-      // Display three posts per carousel item
-      for (let i = 0; i < posts.length; i += 3) {
-        const carouselItem = document.createElement("div");
-        carouselItem.classList.add("carousel-item");
-
-        // Loop through three posts and create post elements
-        for (let j = 0; j < 3 && i + j < posts.length; j++) {
-          const post = posts[i + j];
-          const postElement = document.createElement("div");
-          postElement.classList.add("mb-4");
-
-          postElement.innerHTML = `
-            <h3 class="text-lg font-semibold">${post.title}</h3>
-            <p class="text-gray-600">${post.content}</p>
-            <p class="text-gray-500">Posted by Author ${post.author_id}</p>
-          `;
-
-          carouselItem.appendChild(postElement);
-        }
-
-        // Set the first item as active
-        if (i === 0) {
-          carouselItem.classList.add("active");
-        }
-
-        carouselInner.appendChild(carouselItem);
+  fetch("seeds/posts-seeds.json")
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
       }
+      return response.json();
+    })
+    .then((posts) => {
+      const postsContainer = document.getElementById("postsContainer");
+      const slider = document.getElementById("slider");
+
+      // Get the Handlebars template
+      const templateSource = document.getElementById("post-card-template").innerHTML;
+      const template = Handlebars.compile(templateSource);
+
+      // Render each post
+      posts.forEach((post) => {
+        // Pass post data to the Handlebars template
+        const postCardHtml = template(post);
+
+        // Create an element and append the rendered HTML
+        const postCard = document.createElement("div");
+        postCard.innerHTML = postCardHtml;
+
+        slider.appendChild(postCard);
+      });
+
+      // Initialize Keen Slider after all posts are added
+      const keenSlider = new KeenSlider("#postCarousel", {
+        // Your Keen Slider options
+      });
     })
     .catch((error) => {
       console.error("Error fetching posts:", error);
     });
+});
 
-  // Initialize Bootstrap Carousel
-  const myCarouselElement = document.querySelector('#myCarousel');
-  const carousel = new bootstrap.Carousel(myCarouselElement, {
+
+// Initialize Bootstrap Carousel for postCarousel
+const postCarouselElement = document.getElementById('postCarousel');
+
+if (postCarouselElement) {
+  const carousel = new bootstrap.Carousel(postCarouselElement, {
     interval: 2000,
     touch: false
   });
-});
+} else {
+  console.error('Could not find the carousel element with id "postCarousel"');
+}

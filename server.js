@@ -50,18 +50,8 @@ app.use(controllers);
 
 app.use('/slider', express.static(path.join(__dirname, 'node_modules', 'keen-slider')));
 
-// // Passing the postData to index.handlebar
-// const filePath = path.join(__dirname, "seeds", "post-seeds.json");
+app.use(express.static("seeds"));
 
-// try {
-//     const postsData = JSON.parse(fs.readFileSync(filePath, "utf8"));
-//     app.get("/", (req, res) => {
-//         const firstThreePosts = postsData.slice(0, 3);
-//         res.render("index", { posts: firstThreePosts });
-//     });
-// } catch (error) {
-//     console.error(`Error reading or parsing JSON file: ${error.message}`);
-// }
 
 // Starts the server to begin listening with sequelize for db connection
 //force start should be false if using 'npm run seed' to populate and create db as it will recreate tables each server reload

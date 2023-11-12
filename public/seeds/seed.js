@@ -1,9 +1,9 @@
-const sequelize = require('../config/connection');
-const User = require('../models/user');
-const Expertise = require('../models/expertise');
+const sequelize = require('../../config/connection');
+const User = require('../../models/user');
+const Expertise = require('../../models/expertise');
 const UserExpertise = require('../models/userExpertise');
-const Post = require('../models/post');
-const Comment = require('../models/comment');
+const Post = require('../../models/post');
+const Comment = require('../../models/comment');
 
 const seedDatabase = async () => {
   await sequelize.sync({ force: true });

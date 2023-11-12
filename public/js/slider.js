@@ -1,3 +1,5 @@
+
+
 document.addEventListener("DOMContentLoaded", () => {
     // Keen Slider Initialization
     const sliderElement = document.getElementById("keen-slider");
