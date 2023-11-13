@@ -8,11 +8,17 @@ document.addEventListener("DOMContentLoaded", function () {
       return response.json();
     })
     .then((posts) => {
-      const postsContainer = document.getElementById("postsContainer");
-      const slider = document.getElementById("slider");
+      const slider = document.getElementById("postsContainer");
+
+      // Check if the template element exists
+      const templateElement = document.getElementById("post-card-template");
+      if (!templateElement) {
+        console.error("Handlebars template element not found");
+        return;
+      }
 
       // Get the Handlebars template
-      const templateSource = document.getElementById("post-card-template").innerHTML;
+      const templateSource = templateElement.innerHTML;
       const template = Handlebars.compile(templateSource);
 
       // Render each post
@@ -29,23 +35,22 @@ document.addEventListener("DOMContentLoaded", function () {
 
       // Initialize Keen Slider after all posts are added
       const keenSlider = new KeenSlider("#postCarousel", {
-        // Your Keen Slider options
+        slidesPerView: 1,
+        loop: true,
+        duration: 500,
+        spacing: 20,
+      });
+
+      // Button event listeners
+      document.getElementById("prevBtn").addEventListener("click", function () {
+        keenSlider.prev();
+      });
+
+      document.getElementById("nextBtn").addEventListener("click", function () {
+        keenSlider.next();
       });
     })
     .catch((error) => {
       console.error("Error fetching posts:", error);
     });
 });
-
-
-// Initialize Bootstrap Carousel for postCarousel
-const postCarouselElement = document.getElementById('postCarousel');
-
-if (postCarouselElement) {
-  const carousel = new bootstrap.Carousel(postCarouselElement, {
-    interval: 2000,
-    touch: false
-  });
-} else {
-  console.error('Could not find the carousel element with id "postCarousel"');
-}

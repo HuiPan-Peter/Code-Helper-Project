@@ -4,6 +4,7 @@
 <link rel="stylesheet" href="https://unpkg.com/keen-slider/keen-slider.min.css" />
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
  <script src="js/homepage.js"></script>
+ 
 <!--structure for homepage-->
 
 <section class="keen-slider mb-16">
@@ -24,59 +25,93 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"></script>
 
 <!-- Latest Member Posts Section using Keen Slider with Handlebars and Tailwind CSS -->
-<h3 class="text-2xl font-semibold mb-4">Latest Member Posts</h3>
-<section class="keen-slider mb-12">
+<h3 class="text-2xl font-semibold mb-4 text-center">Latest Member Posts</h3>
+<section class="keen-slider relative mb-12">
   <div id="postCarousel" class="carousel slide" data-ride="carousel">
     <div class="carousel-inner" id="postsContainer">
       <div id="slider" class="keen-slider">
         <!-- Handlebars will render the post cards here -->
+   <div class="container mx-auto">
+<!-- Card 1 -->
+
+<div class="card mb-6 max-w-md mx-auto">
+  <div class="flex items-center">
+    <img src="/images/profileimage.png" class="w-1/8 rounded-start" alt="Card Image">
+    <div class="ml-4 w-7/8">
+      <div class="card-body">
+        <div class="card mb-3">
+          <h5 class="card-title text-xl font-semibold">member472</h5>
+          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+          <p class="card-text text-sm text-gray-500">Last updated 3 mins ago</p>
+        </div>
       </div>
     </div>
-    <a class="carousel-control-prev" href="#postCarousel" role="button" data-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="sr-only">Previous</span>
-    </a>
-    <a class="carousel-control-next" href="#postCarousel" role="button" data-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="sr-only">Next</span>
-    </a>
   </div>
-</section>
+</div>
 
-<!-- Handlebars post card template -->
-<script id="post-card-template" type="text/x-handlebars-template">
-  <div class="keen-slider__slide p-4 flex flex-col items-center">
-    <div class="bg-white rounded-lg shadow-lg p-6 w-full">
-      <h3 class="text-lg font-semibold mb-2">{{ title }}</h3>
-      <p class="text-gray-600 mb-2">{{ content }}</p>
-      <p class="text-gray-500">Posted by Author {{ author_id }}</p>
+<!-- Card 2 -->
+<div class="card mb-6 max-w-md mx-auto">
+  <div class="flex items-center">
+    <img src="/images/profileimage.png" class="w-1/8 rounded-start" alt="Card Image">
+    <div class="ml-4 w-7/8">
+      <div class="card-body">
+        <div class="card mb-3">
+          <h5 class="card-title text-xl font-semibold">member_23</h5>
+          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+          <p class="card-text text-sm text-gray-500">Last updated 3 mins ago</p>
+        </div>
+      </div>
     </div>
   </div>
-</script>
+</div>
 
-
-{{!-- Contact Section --}}
-<section class="bg-blue-100 py-8">
-  <div class="container mx-auto px-4">
-    <div class="text-center mb-6">
-      <h2 class="text-xl font-semibold text-gray-800 mb-2">Get in Touch</h2>
-      <p class="text-gray-600 text-sm">Questions or contributions? We'd love to hear from you.</p>
-    </div>
-    <div class="text-center">
-      <a href="/contact"
-        class="inline-block bg-green-500 text-white font-semibold py-2 px-4 rounded hover:bg-green-600 transition-colors duration-300 mt-4 text-sm">
-        Contact Us
-      </a>
+<!-- Card 3 -->
+<div class="card max-w-md mx-auto">
+  <div class="flex items-center">
+    <img src="/images/profileimage.png" class="w-1/8 rounded-start" alt="Card Image">
+    <div class="ml-4 w-7/8">
+      <div class="card-body">
+        <div class="card mb-3">
+          <h5 class="card-title text-xl font-semibold">member052</h5>
+          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+          <p class="card-text text-sm text-gray-500">Last updated 3 mins ago</p>
+        </div>
+      </div>
     </div>
   </div>
-</section>
+</div>
 
+
+  {{!-- White space between card and "Get in Touch" --}}
+  <div class="mb-8"></div>
+
+  <!-- "Get in Touch" section -->
+  <section class="bg-blue-100 py-40">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-12">
+        <h2 class="text-xl font-semibold text-gray-800 mb-2">Get in Touch</h2>
+        <p class="text-gray-600 text-sm">Questions or contributions? We'd love to hear from you.</p>
+      </div>
+      <div class="text-center">
+        <a href="/contact"
+          class="inline-block bg-green-500 text-white font-semibold py-2 px-4 rounded hover:bg-green-600 transition-colors duration-300 mt-4 text-sm">
+          Contact Us
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Include your scripts and other body elements -->
+</body>
+</html>
+
+<script src="https://cdn.jsdelivr.net/npm/keen-slider@latest/dist/keen-slider.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script src="js/homepage.js"></script>
-<script src="/js/slider.js"></script>
+<script src="js/slider.js"></script>
 
 
  
