@@ -97,6 +97,6 @@ This project is open to contributions and is licensed under the MIT License. Fee
 List of the team members ...
 Sep 
 Justin
-hui 
+Hui 
 Carlovsky 
 Riley 
