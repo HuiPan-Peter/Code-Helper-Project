@@ -14,6 +14,9 @@
 - [License](#license)
 - [Live Link](#live-link)
 - [Collaborators](#collaborators)
+
+---
+
 ## Project Overview
 Developed adhering to the MVC principles, our mission is to foster a community where developers can find projects that align with their expertise and passion, ensuring efficient and quality project delivery.
 ## Objectives
@@ -29,16 +32,23 @@ Developed adhering to the MVC principles, our mission is to foster a community w
 - **Sequelize**
 - **Tailwind CSS**
 - **Keen Slider**
+
 ## Get Started
+
 1. Ensure `Node.js`, `MySQL`, and `Sequelize CLI` are set up on your machine.
 2. Clone the GitHub repository: `git clone repository-link`.
 3. Navigate to the project directory: `cd code-helper`.
 4. Install dependencies: `npm install`.
 5. Configure the `.env` file with your database credentials.
-6. Initialize the database: `npm run db:init`.
+6. Initialize the database: (make sure you have mysql installed)
+
+   6a.  `cd db ` 6b.  `  mysql - u root -p`  6c.`source schema.sql`
+
 7. Seed the database: `npm run seed`.
 8. Launch the server: `npm start`.
+
 ## Development Process
+
 ### Project Initialization
 Kickstart the project with meticulous planning, resource allocation, and code repository initialization.
 ### Database Configuration
@@ -64,8 +74,7 @@ If your project has a lot of features, list them here.
 Fork the repository and contribute.
 ## Live Link
 ### Useful Links
-- [Live Application on Heroku](https://)
-- [Demo Video](#)
+- [Live Application on Heroku](https://morning-lake-13776-b0a983f7a31f.herokuapp.com/)
 - [License & Contribution](#license)
 ## Collaborators
 - Sep Alamouti
