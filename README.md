@@ -74,7 +74,7 @@ If your project has a lot of features, list them here.
 Fork the repository and contribute.
 ## Live Link
 ### Useful Links
-- [Live Application on Heroku](https://morning-lake-13776-b0a983f7a31f.herokuapp.com/)
+- [Live Application on Heroku](https://stark-tor-52474-b7e0434ac5e8.herokuapp.com/)
 - [License & Contribution](#license)
 ## Collaborators
 - Sep Alamouti
@@ -82,3 +82,4 @@ Fork the repository and contribute.
 - Riley Gaffney
 - Hui Pan
 - Carlovsky Bellefleur
+
